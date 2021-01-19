@@ -90,6 +90,7 @@
 
 .form-text.text-danger {
   display: none;
+  color: red;
 }
 
 #message {
