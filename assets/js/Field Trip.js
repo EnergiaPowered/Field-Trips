@@ -12,7 +12,7 @@ let name = document.getElementById('name'),
 let error_msg = document.getElementsByClassName('text-danger');
 
 let submit = document.getElementById('submit');
-
+const patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function validate(){
 	let stat = true;
@@ -23,7 +23,7 @@ function validate(){
 		error_msg[0].style.display = "none";
 	}
 
-	if(email.value == "" || !email.value.includes('@')){
+	if(!patt.test(email.value)){
 		error_msg[1].style.display = "block";
 		stat = false;
 	}else{
@@ -37,7 +37,7 @@ function validate(){
 		error_msg[2].style.display = "none";
 	}
 
-	if(facebook.value == "" || !facebook.value.includes('https://')){
+	if(facebook.value == ""){
 		error_msg[3].style.display = "block";
 		stat = false;
 	}else{
