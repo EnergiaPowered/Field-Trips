@@ -17,7 +17,7 @@
   padding: 40px;
   border-radius: 4px;
   color: #505e6c;
-  box-shadow: 1px 1px 20px 3px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width:767px) {
@@ -41,7 +41,7 @@
 .contact-clean form .form-control {
   background: #fff;
   border-radius: 2px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
   outline: none;
   color: inherit;
   padding-left: 12px;
@@ -111,4 +111,3 @@
   max-width: 700px;
   margin: 0 auto 25px;
 }
-
