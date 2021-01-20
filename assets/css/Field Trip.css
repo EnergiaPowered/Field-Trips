@@ -130,3 +130,7 @@
   max-width: 700px;
   margin: 0 auto 25px;
 }
+
+.saved_data{
+  display: none;
+}
