@@ -1,5 +1,5 @@
 .contact-clean {
-  background: #ffffff;
+  background: #0d335d;
   padding: 80px 0;
 }
 
@@ -13,11 +13,11 @@
   max-width: 480px;
   width: 90%;
   margin: 0 auto;
-  background-color: #ffffff;
+  background-color: #fff3e6;
   padding: 40px;
   border-radius: 4px;
-  color: #505e6c;
-  box-shadow: 1px 1px 20px 3px rgba(0, 0, 0, 0.1);
+  color: #0d335d;
+  box-shadow: 1px 1px 20px 3px rgba(193, 161, 211, 0.404);
 }
 
 @media (max-width:767px) {
@@ -30,8 +30,9 @@
   margin-top: 5px;
   font-weight: bold;
   font-size: 28px;
-  margin-bottom: 36px;
+  padding-left: 15px;
   color: inherit;
+  height: 100%;
 }
 
 .contact-clean .form-group:last-child {
@@ -46,10 +47,30 @@
   color: inherit;
   padding-left: 12px;
   height: 42px;
+  transition: all 0.3s;
+}
+
+.contact-clean form .form-control:hover {
+  background-color: #e3e4e6;
 }
 
 .contact-clean form .form-control:focus {
   border: 1px solid #b2b2b2;
+}
+
+.contact-clean form #trips {
+  overflow: hidden;
+  height: fit-content;
+}
+
+.contact-clean form #trips option:hover {
+  background-color: #0d335d;
+  color: #fff3e6;
+}
+
+.contact-clean form #trips[multiple]:focus option:checked {
+  background-color: #0d335d;
+  color: #fff3e6;
 }
 
 .contact-clean form textarea.form-control {
@@ -71,10 +92,12 @@
   letter-spacing: 0.4px;
   line-height: 1;
   outline: none !important;
+  transition: all 0.3s;
 }
 
 .contact-clean form .btn:hover {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .contact-clean form .btn:active {
@@ -82,8 +105,8 @@
 }
 
 .contact-clean form .btn-primary {
-  background: #2BAE66FF !important;
-  border: #2BAE66FF !important;
+  background: #0d335d !important;
+  border: #0d335d !important;
   margin-top: 15px;
   color: #fff;
 }
@@ -95,11 +118,6 @@
 
 #message {
   resize: none;
-}
-
-#trip {
-  overflow: auto;
-  height: 102px;
 }
 
 .Req-Denied {
