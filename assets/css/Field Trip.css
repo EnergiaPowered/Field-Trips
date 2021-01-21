@@ -1,5 +1,7 @@
-.contact-clean {
+body{
   background: #0d335d;
+}
+.contact-clean {
   padding: 80px 0;
 }
 
@@ -13,7 +15,7 @@
   max-width: 480px;
   width: 90%;
   margin: 0 auto;
-  background-color: #fff3e6;
+  background-color: #ffffff;
   padding: 40px;
   border-radius: 4px;
   color: #0d335d;
@@ -119,18 +121,19 @@
 #message {
   resize: none;
 }
-
+#trip{
+  height: 105px;
+  overflow: auto;
+}
 .Req-Denied {
   padding: 50px 0;
 }
-
+.Req-Denied p{
+  color: white !important;
+}
 .Req-Denied .intro {
   display: none;
   font-size: 36px;
   max-width: 700px;
   margin: 0 auto 25px;
-}
-
-.saved_data{
-  display: none;
 }

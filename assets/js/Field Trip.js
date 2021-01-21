@@ -9,27 +9,29 @@ let name = document.getElementById('name'),
 	academic_year = document.getElementById('academic_year'),
 	last_GPA = document.getElementById('last_GPA'),
 	trips = document.getElementById('trip');
-
+	message = document.getElementById('message');
 //	Array Of Error Messages
 let error_msg = document.getElementsByClassName('text-danger');
 
-//	Array Of Trips
-let saved_data = document.getElementsByClassName('saved_data');
-
 let submit = document.getElementById('submit');
+// regex for email verification
 const patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-//	Selecting Multiple Trips
-function multipleSelect(){
-	for(let i = 0; i < trips.options.length; i++){
-		if(trips.options[i].selected === true)
-			saved_data[i].value = 1;
-		else
-			saved_data[i].value = 0;
-	}
-}
+// Selecting Multiple Trips
+function get_selected_values(select){
+	let selected = []
+	let options = select && select.options;
+	console.log(options)
+	for (let i=0; i < 4 ; i++) {
+		if (options[i].selected) {
+			selected.push(options[i].value || options[i].text);
+		}
+	}	
+	return selected;
+};
 
 //	Validating The Input Fields
+// Display the error message which input has wrong data
 function validate(){
 	let stat = true;
 	if(name.value == ""){
@@ -94,22 +96,38 @@ function validate(){
 
 submit.addEventListener("click", function(e){
 	e.preventDefault();
-	
-	multipleSelect();
+	// get selected trips in array then transform to comma seperated string
+	selected_trips = get_selected_values(trips).join();
 
 	if(!validate()){
 		console.log('error');
-	}else{
-		$.ajax({
-        	url:'https://api.apispreadsheets.com/data/6910/',
-       		type:'post',
-       		data:$("#myForm").serializeArray(),
-       		success: function(){
-         		window.location.replace("Submission.html");
-       		},
-        	error: function(){
-        		alert("There was an error :(")
-      		}
-  		});
+	}
+	else{
+		// post request by fetch to Api spreadSheet 
+		fetch("https://api.apispreadsheets.com/data/6960/", {
+		method: "POST",
+		body: JSON.stringify({"data": {
+		"Full name":name.value
+		,"email":email.value
+		,"phone number":phone.value
+		,"Facebook account":facebook.value
+		,"university": university.value
+		,"college":college.value
+		,"Department":department.value
+		,"Academic Year":academic_year.value,
+		"Last GPA":last_GPA.value,
+		"trips":selected_trips, 
+		"message":message.value}}),
+		})
+		.then(res =>{
+		// if created response will change to The success page
+			if (res.status === 201){
+				window.location.replace("Submission.html");
+			}
+		else{
+			alert("There was an error :(")	
+		}
+		})
+
 	}
 });
