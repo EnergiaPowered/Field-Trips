@@ -12,23 +12,25 @@ let name = document.getElementById('name'),
 	message = document.getElementById('message');
 //	Array Of Error Messages
 let error_msg = document.getElementsByClassName('text-danger');
-
 let submit = document.getElementById('submit');
+let trips_data;
 // regex for email verification
 const patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 // Selecting Multiple Trips
 function get_selected_values(select){
 	let selected = []
 	let options = select && select.options;
 	console.log(options)
-	for (let i=0; i < 4 ; i++) {
+	for (let i=0; i < option.length ; i++) {
 		if (options[i].selected) {
 			selected.push(options[i].value || options[i].text);
 		}
 	}	
 	return selected;
 };
+
+
+
 
 //	Validating The Input Fields
 // Display the error message which input has wrong data
@@ -94,6 +96,38 @@ function validate(){
 	return stat;
 }
 
+
+fetch("https://api.apispreadsheets.com/data/6966/").then(res=>{
+	if (res.status === 200){
+		// SUCCESS
+		res.json().then(data=>{
+			// the trips that available to choose 50 application for every trip
+			// first 4 columns that have the Trip_Name and Count
+			trips_data = data.data.slice(0, 4).filter(trip => trip.Counts < 50);
+			//  upload from the spreadsheet trips which the user can choose
+			trips_data.forEach(element => {
+				let option = document.createElement("option");
+				option.text = element.Trip_name;
+				option.value = element.Trip_name;
+				trips.appendChild(option);
+			});
+			// display the Reach-out message when there isn't available applications for all trips 
+			if (trips_data.length == 0){
+				let div = document.getElementById("intro");
+				let form = document.getElementsByClassName('contact-clean')[0];
+				form.style.display = "none";
+				div.style.display = "block";
+			}
+
+
+		}).catch(err => alert("There was an error :(")	)
+	}	
+})
+
+
+
+
+
 submit.addEventListener("click", function(e){
 	e.preventDefault();
 	// get selected trips in array then transform to comma seperated string
@@ -104,7 +138,7 @@ submit.addEventListener("click", function(e){
 	}
 	else{
 		// post request by fetch to Api spreadSheet 
-		fetch("https://api.apispreadsheets.com/data/6960/", {
+		fetch("https://api.apispreadsheets.com/data/6966/", {
 		method: "POST",
 		body: JSON.stringify({"data": {
 		"Full name":name.value
@@ -127,7 +161,11 @@ submit.addEventListener("click", function(e){
 		else{
 			alert("There was an error :(")	
 		}
-		})
+		});
+
+
 
 	}
 });
+
+
