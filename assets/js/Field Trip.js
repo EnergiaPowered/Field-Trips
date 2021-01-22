@@ -21,7 +21,7 @@ function get_selected_values(select){
 	let selected = []
 	let options = select && select.options;
 	console.log(options)
-	for (let i=0; i < option.length ; i++) {
+	for (let i=0; i < options.length ; i++) {
 		if (options[i].selected) {
 			selected.push(options[i].value || options[i].text);
 		}
@@ -119,6 +119,7 @@ fetch("https://api.apispreadsheets.com/data/6966/").then(res=>{
 				div.style.display = "block";
 			}
 
+			document.querySelector('.loader').classList.add('disappear');
 
 		}).catch(err => alert("There was an error :(")	)
 	}	
