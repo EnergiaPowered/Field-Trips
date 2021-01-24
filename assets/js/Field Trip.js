@@ -152,16 +152,20 @@ submit.addEventListener("click", function(e){
 		"Last GPA":last_GPA.value,
 		"trips":selected_trips, 
 		"message":message.value}}),
-		})
+	})	
 		.then(res =>{
 		// if created response will change to The success page
 			if (res.status === 201){
-				window.location.replace("Submission.html");
+				window.location.href="Submission.html";
 			}
 		else{
-			alert("There was an error :(")	
+			alert("There was an error in the server :(")
+			submit.innerText = "Submit";	
+			submit.setAttribute("disabled", false);
 		}
 		});
+		submit.setAttribute("disabled", true);
+		submit.innerText = "Please wait...";
 
 
 
