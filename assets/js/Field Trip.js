@@ -14,8 +14,9 @@ let name = document.getElementById('name'),
 let error_msg = document.getElementsByClassName('text-danger');
 let submit = document.getElementById('submit');
 let trips_data;
-// regex for email verification
-const patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+// regex for email and facebook account verification
+const email_patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const facebook_patt = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
 // Selecting Multiple Trips
 function get_selected_values(select){
 	let selected = []
@@ -43,7 +44,7 @@ function validate(){
 		error_msg[0].style.display = "none";
 	}
 
-	if(!patt.test(email.value)){
+	if(!email_patt.test(email.value)){
 		error_msg[1].style.display = "block";
 		stat = false;
 	}else{
@@ -56,8 +57,7 @@ function validate(){
 	}else{
 		error_msg[2].style.display = "none";
 	}
-
-	if(facebook.value == ""){
+	if(!facebook_patt.test(facebook.value)){
 		error_msg[3].style.display = "block";
 		stat = false;
 	}else{
@@ -133,7 +133,6 @@ submit.addEventListener("click", function(e){
 	e.preventDefault();
 	// get selected trips in array then transform to comma seperated string
 	selected_trips = get_selected_values(trips).join();
-
 	if(!validate()){
 		console.log('error');
 	}

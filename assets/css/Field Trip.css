@@ -122,7 +122,7 @@ body{
   resize: none;
 }
 #trip{
-  height: 105px;
+  height: auto;
   overflow: auto;
 }
 .Req-Denied {
