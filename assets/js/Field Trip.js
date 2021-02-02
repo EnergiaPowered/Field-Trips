@@ -75,7 +75,7 @@ function validate(){
 }
 
 
-fetch("https://api.apispreadsheets.com/data/7633/").then(res=>{
+fetch("https://api.apispreadsheets.com/data/7634/").then(res=>{
 	if (res.status === 200){
 		// SUCCESS
 		res.json().then(data=>{
@@ -116,7 +116,7 @@ submit.addEventListener("click", function(e){
 	}
 	else{
 		// post request by fetch to Api spreadSheet 
-		fetch("https://api.apispreadsheets.com/data/7632/", {
+		fetch("https://api.apispreadsheets.com/data/7635/", {
 		method: "POST",
 		body: JSON.stringify({"data": {
 		"Full name":name.value
