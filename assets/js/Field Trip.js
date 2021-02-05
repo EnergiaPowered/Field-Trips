@@ -17,8 +17,10 @@ let trips_data;
 // regex for email and facebook account verification
 const email_patt = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const facebook_patt = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
-
-
+// captilize
+function capitalize(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
 //	Validating The Input Fields
 // Display the error message which input has wrong data
@@ -50,25 +52,31 @@ function validate(){
 	}else{
 		error_msg[3].style.display = "none";
 	}
-
-	if(department.value == ""){
+	if(college.value == ""){
 		error_msg[4].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[4].style.display = "none";
 	}
-	if(academic_year.value == "" || isNaN(academic_year.value) || academic_year.value > 7 || academic_year.value < 0){
+
+	if(department.value == ""){
 		error_msg[5].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[5].style.display = "none";
 	}
-
-	if(trips.value == ""){
+	if(academic_year.value == "" || isNaN(academic_year.value) || academic_year.value > 7 || academic_year.value < 0){
 		error_msg[6].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[6].style.display = "none";
+	}
+
+	if(trips.value == ""){
+		error_msg[7].style.display = "block";
+		stat = false;
+	}else{
+		error_msg[7].style.display = "none";
 	}
 
 	return stat;
@@ -124,8 +132,8 @@ submit.addEventListener("click", function(e){
 		,"phone number":phone.value
 		,"Facebook account":facebook.value
 		,"university": university.value
-		,"college":college.value
-		,"Department":department.value
+		,"college":capitalize(college.value)
+		,"Department":capitalize(department.value)
 		,"Academic Year":academic_year.value,
 		"trips":trips.value , 
 		"message":message.value}}),
