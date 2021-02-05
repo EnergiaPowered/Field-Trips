@@ -52,31 +52,37 @@ function validate(){
 	}else{
 		error_msg[3].style.display = "none";
 	}
-	if(college.value == ""){
+	if(university.value == ""){
 		error_msg[4].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[4].style.display = "none";
 	}
-
-	if(department.value == ""){
+	if(college.value == ""){
 		error_msg[5].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[5].style.display = "none";
 	}
-	if(academic_year.value == "" || isNaN(academic_year.value) || academic_year.value > 7 || academic_year.value < 0){
+
+	if(department.value == ""){
 		error_msg[6].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[6].style.display = "none";
 	}
-
-	if(trips.value == ""){
+	if(academic_year.value == "" || isNaN(academic_year.value) || academic_year.value > 7 || academic_year.value < 0){
 		error_msg[7].style.display = "block";
 		stat = false;
 	}else{
 		error_msg[7].style.display = "none";
+	}
+
+	if(trips.value == ""){
+		error_msg[8].style.display = "block";
+		stat = false;
+	}else{
+		error_msg[8].style.display = "none";
 	}
 
 	return stat;
@@ -131,7 +137,7 @@ submit.addEventListener("click", function(e){
 		,"email":email.value
 		,"phone number":phone.value
 		,"Facebook account":facebook.value
-		,"university": university.value
+		,"university": capitalize(university.value)
 		,"college":capitalize(college.value)
 		,"Department":capitalize(department.value)
 		,"Academic Year":academic_year.value,
