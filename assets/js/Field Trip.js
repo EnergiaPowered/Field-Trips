@@ -103,7 +103,7 @@ fetch("https://api.apispreadsheets.com/data/6966/").then(res=>{
 		res.json().then(data=>{
 			// the trips that available to choose 50 application for every trip
 			// first 4 columns that have the Trip_Name and Count
-			trips_data = data.data.slice(0, 4).filter(trip => trip.Counts < 50);
+			trips_data = data.data.slice(0, 4).filter(trip => trip.Counts < 200);
 			//  upload from the spreadsheet trips which the user can choose
 			trips_data.forEach(element => {
 				let option = document.createElement("option");
