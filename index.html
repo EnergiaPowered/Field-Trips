@@ -54,49 +54,21 @@
                     enter a correct Facebook Account URL</small>
             </div>
             <div class="form-group">
-                <h5 data-bs-hover-animate="flash">University:</h5><select
-                    class="border rounded-pill shadow-sm form-control" required="" id="university" name="university">
-                    <option value="Ain Shams ">Ain Shams </option>
-                    <option value="Cairo ">Cairo </option>
-                    <option value="Helwan ">Helwan </option>
-                    <option value="Helwan - Matarya Branch ">Helwan - Matarya Branch </option>
-                    <option value="Shoubra ">Shoubra </option>
-                    <option value="ECU ">ECU </option>
-                    <option value="October ">October </option>
-                    <option value="GUC ">GUC </option>
-                    <option value="AUC ">AUC </option>
-                    <option value=" Al-azhar "> Al-azhar </option>
-                    <option value="MSA ">MSA </option>
-                    <option value="Future ">Future </option>
-                    <option value="BUE">BUE</option>
-                    <option value="Badr">Badr</option>
-                    <option value="AAST">AAST</option>
-                    <option value="MUST">MUST</option>
-                    <option value="Nile">Nile</option>
-                    <option value="CIC">CIC</option>
-                    <option value=" High institute of technology"> High institute of technology</option>
-                    <option value="Other">Other</option>
-                </select>
+                <h5 data-bs-hover-animate="flash">University:</h5>
+                <input
+                class="border rounded-pill shadow-sm form-control" type="Facebook" name="university"
+                placeholder="university" required="" id="university">
+                <small class="form-text text-danger" id="department_error">Please
+                enter a correct University</small>
             </div>
             <div class="form-group">
-                <h5 data-bs-hover-animate="flash">College:</h5><select
-                    class="border rounded-pill shadow-sm form-control" required="" id="college" name="college">
-                    <option value="Engineering">Engineering</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Law">Law</option>
-                    <option value="medicine">medicine</option>
-                    <option value="Economics and political science">Economics and political science</option>
-                    <option value="Applied arts">Applied arts</option>
-                    <option value="Pharmacy">Pharmacy</option>
-                    <option value="Linguistics">Linguistics</option>
-                    <option value="Education">Education</option>
-                    <option value="Science">Science</option>
-                    <option value="Fine arts">Fine arts</option>
-                    <option value="Mass communication">Mass communication</option>
-                    <option value="Arts">Arts</option>
-                    <option value="Other">Other</option>
-                </select>
+                <h5 data-bs-hover-animate="flash">College:</h5>
+                <input
+                    class="border rounded-pill shadow-sm form-control" type="Facebook" name="college"
+                    placeholder="College" required="" id="college">
+                    <small class="form-text text-danger" id="department_error">Please
+                    enter a correct College</small>
+                
             </div>
             <div class="form-group">
                 <h5 data-bs-hover-animate="flash">Department:</h5><input
@@ -112,20 +84,10 @@
                     enter a correct Academic Year</small>
             </div>
             <div class="form-group">
-                <h5 data-bs-hover-animate="flash">Last GPA:</h5><input
-                    class="border rounded-pill shadow-sm form-control" type="Last Grade" name="Last GPA"
-                    placeholder="Last GPA" required="" id="last_GPA"><small class="form-text text-danger"
-                    id="GPA_error">Please
-                    enter a correct GPA</small>
-            </div>
-            <div class="form-group">
                <h5 data-bs-hover-animate="flash">Trips:</h5>
-                <h6 class="text-black-50"><em>you can choose more than one trip</em><br></h6>
-                <select class="border rounded shadow-sm form-control" id="trip" required="" multiple="" name="trips">
-
-
+                <select class="border rounded-pill shadow-sm form-control" id="trip" required="" name="trips">
                 </select>
-                <small class="form-text text-danger" id="GPA_error">You Have To Choose At Least 1 Trip</small>
+                <small class="form-text text-danger" id="GPA_error">You Have To Choose a Trip</small>
             </div>
             <div class="form-group">
                 <h5 data-bs-hover-animate="flash">Any Comment?</h5><textarea class="border rounded form-control"
